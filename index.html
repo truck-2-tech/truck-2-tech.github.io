@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T2T Security | James | Truck-to-Tech</title>
+<title>T2T | James Shank | Network Engineering</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -31,8 +31,6 @@
     line-height: 1.6;
     min-height: 100vh;
   }
-
-  /* scanline overlay */
   body::before {
     content: '';
     position: fixed;
@@ -41,8 +39,6 @@
     pointer-events: none;
     z-index: 1000;
   }
-
-  /* NAV */
   nav {
     display: flex;
     align-items: center;
@@ -75,8 +71,6 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
-  /* HERO */
   .hero {
     padding: 5rem 2.5rem 4rem;
     max-width: 900px;
@@ -117,8 +111,6 @@
     animation: fadeUp 0.6s 0.35s forwards;
   }
   .hero-sub strong { color: var(--text); font-weight: 600; }
-
-  /* stat strip */
   .stat-strip {
     display: flex;
     gap: 0;
@@ -150,8 +142,6 @@
     letter-spacing: 0.12em;
     margin-top: 0.3rem;
   }
-
-  /* SECTION */
   section {
     padding: 4rem 2.5rem;
     border-top: 1px solid var(--border);
@@ -181,8 +171,6 @@
     height: 1px;
     background: var(--border);
   }
-
-  /* CERT GRID */
   .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -198,10 +186,7 @@
     transition: border-color 0.2s, transform 0.2s;
     cursor: default;
   }
-  .cert-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
+  .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .cert-card::before {
     content: '';
     position: absolute;
@@ -240,8 +225,6 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-
-  /* LAB CARDS */
   .lab-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -295,8 +278,6 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-
-  /* TIMELINE */
   .timeline {
     position: relative;
     padding-left: 2rem;
@@ -342,8 +323,6 @@
     color: var(--muted);
     margin-top: 0.3rem;
   }
-
-  /* CONTACT */
   .contact-row {
     display: flex;
     gap: 12px;
@@ -361,22 +340,10 @@
     cursor: pointer;
     border: none;
   }
-  .contact-btn.primary {
-    background: var(--accent);
-    color: #000;
-    font-weight: 700;
-  }
+  .contact-btn.primary { background: var(--accent); color: #000; font-weight: 700; }
   .contact-btn.primary:hover { background: #33deff; }
-  .contact-btn.ghost {
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-  }
-  .contact-btn.ghost:hover {
-    background: rgba(0,212,255,0.08);
-  }
-
-  /* FOOTER */
+  .contact-btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .contact-btn.ghost:hover { background: rgba(0,212,255,0.08); }
   footer {
     border-top: 1px solid var(--border);
     padding: 1.5rem 2.5rem;
@@ -400,8 +367,6 @@
     color: var(--muted);
     letter-spacing: 0.08em;
   }
-
-  /* blinking cursor */
   .cursor::after {
     content: '▋';
     animation: blink 1s step-end infinite;
@@ -409,25 +374,30 @@
     font-size: 0.8em;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  .animate {
-    opacity: 0;
-    animation: fadeUp 0.5s forwards;
+  .animate { opacity: 0; animation: fadeUp 0.5s forwards; }
+  .section-sub {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.2rem;
+    margin-top: -1.5rem;
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">T2T<span>SEC</span></div>
+  <div class="nav-logo">T2T<span>NET</span></div>
   <ul class="nav-links">
     <li><a href="#certs">Certs</a></li>
-    <li><a href="#labs">Labs</a></li>
+    <li><a href="#networking">Networking</a></li>
+    <li><a href="#security">Security Research</a></li>
     <li><a href="#background">Background</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -438,29 +408,29 @@
   <h1>
     <span class="line1">James Shank</span>
     <span class="line2">T2T Security</span>
-    <span class="line3">Network Engineering and Information Security</span>
+    <span class="line3">Network Engineering & Information Security // Kansas City</span>
   </h1>
   <p class="hero-sub">
-    <strong>Network Engineer and Penetration Tester in progress.</strong> 20+ years spread across U.S. Army, Army Reserves, the Commercial Freight industry and MSP Tier II.
+    <strong>Network Engineer with a security edge.</strong> 20+ years across U.S. Army, Army Reserves, and commercial freight. I am now building enterprise networking skills with a grounding in how attackers think about infrastructure. Currently working as an MSP Tier II Technician supporting HIPAA-regulated healthcare environments.
   </p>
-  #<div class="stat-strip">
-   <div class="stat">
-    <div class="stat-num">63</div>
-    <div class="stat-label">HTB Machines Completed</div>
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years Service</div>
     </div>
     <div class="stat">
-    <div class="stat-num">OSCP</div>
-     <div class="stat-label">In Progress</div>
+      <div class="stat-num">CCNA</div>
+      <div class="stat-label">In Progress</div>
     </div>
     <div class="stat">
-    <div class="stat-num">CCNA</div>
-     <div class="stat-label">In Progress</div>
+      <div class="stat-num">HIPAA and PCI/DSS</div>
+      <div class="stat-label">Regulated Environments</div>
     </div>
     <div class="stat">
-    <div class="stat-num">95%+</div>
-     <div class="stat-label">CSAT Score</div>
+      <div class="stat-num">Pro/Master</div>
+      <div class="stat-label">HTB Rank</div>
     </div>
- </div>
+  </div>
 </div>
 
 <section id="certs">
@@ -471,9 +441,9 @@
   </div>
   <div class="cert-grid">
     <div class="cert-card">
-      <div class="cert-issuer">CompTIA</div>
-      <div class="cert-name">Security+</div>
-      <div class="cert-badge">Active</div>
+      <div class="cert-issuer">Cisco</div>
+      <div class="cert-name">CCNA</div>
+      <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
     </div>
     <div class="cert-card">
       <div class="cert-issuer">CompTIA</div>
@@ -482,38 +452,67 @@
     </div>
     <div class="cert-card">
       <div class="cert-issuer">CompTIA</div>
+      <div class="cert-name">Security+</div>
+      <div class="cert-badge">Active</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">CompTIA</div>
       <div class="cert-name">A+</div>
       <div class="cert-badge">Active</div>
     </div>
     <div class="cert-card">
-      <div class="cert-issuer">TCM Security</div>
+      <div class="cert-issuer">INE Security</div>
       <div class="cert-name">eJPT</div>
       <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">Anthropic</div>
-      <div class="cert-name">CARTE</div>
-      <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
     </div>
     <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
       <div class="cert-issuer">OffSec</div>
       <div class="cert-name">OSCP</div>
       <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
     </div>
-    <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
-      <div class="cert-issuer">CISCO</div>
-      <div class="cert-name">CCNA</div>
-      <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
+  </div>
+</section>
+
+<section id="networking">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Networking Labs</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="lab-grid">
+    <div class="lab-card">
+      <div class="lab-card-type">Home Lab</div>
+      <div class="lab-card-title">t2t.local</div>
+      <div class="lab-card-desc">Two-site VMware lab connected via IKEv2 IPsec over a simulated WAN. OPNsense firewalls at each site, routed inter-site traffic, full Windows Server stack including AD DS, ADCS, WSUS, NPAS, RDS, and WDS.</div>
+      <div class="lab-tags">
+        <span class="tag">VMware</span>
+        <span class="tag">OPNsense</span>
+        <span class="tag">IKEv2</span>
+        <span class="tag">IPsec</span>
+        <span class="tag">AD DS</span>
+      </div>
+    </div>
+    <div class="lab-card">
+      <div class="lab-card-type">Cisco Packet Tracer</div>
+      <div class="lab-card-title">VLAN / VTP / Trunking</div>
+      <div class="lab-card-desc">Multilayer switched topology with 802.1Q trunk configuration across a three-tier hierarchy. VTP server/client propagation pushing VLAN info to a 2960 access layer.</div>
+      <div class="lab-tags">
+        <span class="tag">VTP</span>
+        <span class="tag">802.1Q</span>
+        <span class="tag">Trunking</span>
+        <span class="tag">MLS</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="labs">
+<section id="security">
   <div class="section-header">
-    <span class="section-num">02</span>
-    <span class="section-title">Labs &amp; Writeups</span>
+    <span class="section-num">03</span>
+    <span class="section-title">Security Research</span>
     <div class="section-line"></div>
   </div>
+  <p class="section-sub">CTF writeups and offensive security labs — HackTheBox Pro Hacker, Team OSI</p>
   <div class="lab-grid">
     <a href="/labs/htb/logging/" class="lab-card">
       <div class="lab-card-type">HTB Machine</div>
@@ -547,27 +546,6 @@
       </div>
     </div>
     <div class="lab-card">
-      <div class="lab-card-type">Home Lab</div>
-      <div class="lab-card-title">t2t.local</div>
-      <div class="lab-card-desc">Two-site VMware lab with OPNsense IKEv2 IPsec tunnel. DC01, FS01, WS01, Kali. Full AD DS, ADCS, WSUS, NPAS, RDS stack.</div>
-      <div class="lab-tags">
-        <span class="tag">VMware</span>
-        <span class="tag">OPNsense</span>
-        <span class="tag">IPsec</span>
-        <span class="tag">AD DS</span>
-      </div>
-    </div>
-    <div class="lab-card">
-      <div class="lab-card-type">Cisco PT</div>
-      <div class="lab-card-title">VLAN / VTP / Trunking</div>
-      <div class="lab-card-desc">Multilayer switched topology with 802.1Q trunk configuration, VTP server/client propagation across 2960 access layer.</div>
-      <div class="lab-tags">
-        <span class="tag">VTP</span>
-        <span class="tag">802.1Q</span>
-        <span class="tag">Trunking</span>
-      </div>
-    </div>
-    <div class="lab-card">
       <div class="lab-card-type">Web App Pentest</div>
       <div class="lab-card-title">HackSmarter Capstone</div>
       <div class="lab-card-desc">Full engagement with SysReptor reporting. Findings include SQLi, SSRF, RCE via file upload, session fixation, CSRF, and stored HTML injection.</div>
@@ -583,7 +561,7 @@
 
 <section id="background">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <span class="section-title">Background</span>
     <div class="section-line"></div>
   </div>
@@ -591,33 +569,33 @@
     <div class="tl-item">
       <div class="tl-date">Present</div>
       <div class="tl-title">Tier II Technician — IT Voice MSP</div>
-      <div class="tl-desc">Supporting HIPAA-regulated healthcare clients. Pursuing OSCP, CCNA and WGU degree simultaneously.</div>
+      <div class="tl-desc">Supporting HIPAA-regulated healthcare clients across networking, systems, and security. Building toward a network engineering role.</div>
     </div>
     <div class="tl-item">
       <div class="tl-date">Ongoing</div>
-      <div class="tl-title">WGU B.S. Cybersecurity</div>
-      <div class="tl-desc">Digital forensics (Autopsy), security operations, data security, incident response. NIST SP 800-series methodology throughout.</div>
+      <div class="tl-title">WGU B.S. — Cloud and Network Engineering (Cisco)</div>
+      <div class="tl-desc">Pursuing the Cisco specialization track covering CCNA, CyberOps, DevNet, and cloud infrastructure. Degree pivot pending WGU credit evaluation.</div>
     </div>
     <div class="tl-item">
       <div class="tl-date">Prior</div>
       <div class="tl-title">Commercial Truck Driver — ABF Freight</div>
-      <div class="tl-desc">Regional freight, and my first stop after the Military.</div>
+      <div class="tl-desc">Regional truck driver, pulling double and triple trailers across the Midwest. It was my first stop after the military, and the origin of the Truck-2-Tech brand.</div>
     </div>
     <div class="tl-item">
       <div class="tl-date">Prior</div>
       <div class="tl-title">U.S. Army / Army Reserves</div>
-      <div class="tl-desc">The foundation everything else is built on.</div>
+      <div class="tl-desc">The foundation that made me who I am today. A musician turned leader, I've learned valuable lessions in Loyalty, Duty, Respect, Selfless-Service, Honor, Integrity, and Personal Courage.</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <span class="section-title">Contact</span>
     <div class="section-line"></div>
   </div>
-  <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; max-width:460px;">Open to network security, network engineering, penetration testing roles, security consulting, and collaboration. Reach out via GitHub or LinkedIn.</p>
+  <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; max-width:460px;">Open to network engineering, network security, and infrastructure roles. Also available for collaboration and security research. Reach out via GitHub or LinkedIn.</p>
   <div class="contact-row">
     <a href="https://github.com/MaLsR6053" class="contact-btn primary">GitHub Profile</a>
     <a href="https://linkedin.com/in/james-d-shank" class="contact-btn ghost">LinkedIn</a>
@@ -626,7 +604,7 @@
 
 <footer>
   <div class="footer-logo">T2T Security</div>
-  <div class="footer-copy">Truck-to-Tech<span class="cursor"></span></div>
+  <div class="footer-copy">Truck-to-Tech // Kansas City <span class="cursor"></span></div>
 </footer>
 
 </body>
