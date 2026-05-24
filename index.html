@@ -205,6 +205,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
+    align-items: stretch;
   }
   .cert-card {
     background: var(--card);
@@ -215,6 +216,8 @@
     overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
     cursor: default;
+    display: flex;
+    flex-direction: column;
   }
   .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .cert-card::before {
