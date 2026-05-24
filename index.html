@@ -21,6 +21,7 @@
     --mono: 'Share Tech Mono', monospace;
     --sans: 'Barlow', sans-serif;
     --condensed: 'Barlow Condensed', sans-serif;
+    --max: 1100px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -39,17 +40,27 @@
     pointer-events: none;
     z-index: 1000;
   }
+
+  /* ── NAV ── */
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 2.5rem;
+    padding: 1.2rem 2rem;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     background: rgba(10,12,15,0.95);
     backdrop-filter: blur(8px);
     z-index: 100;
+  }
+  .nav-inner {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .nav-logo {
     font-family: var(--condensed);
@@ -58,12 +69,13 @@
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
+    flex-shrink: 0;
   }
   .nav-logo span { color: var(--accent2); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
   .nav-links a {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--muted);
     text-decoration: none;
     text-transform: uppercase;
@@ -71,9 +83,17 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── HERO ── */
   .hero {
-    padding: 5rem 2.5rem 4rem;
-    max-width: 900px;
+    padding: 5rem 0 4rem;
     position: relative;
   }
   .hero-tag {
@@ -90,7 +110,7 @@
   .hero-tag::after { content: ' ]'; }
   .hero h1 {
     font-family: var(--condensed);
-    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-size: clamp(2.6rem, 8vw, 5.5rem);
     font-weight: 800;
     line-height: 0.95;
     text-transform: uppercase;
@@ -105,12 +125,14 @@
     margin-top: 1.8rem;
     font-size: 1.05rem;
     color: var(--muted);
-    max-width: 520px;
+    max-width: 580px;
     line-height: 1.7;
     opacity: 0;
     animation: fadeUp 0.6s 0.35s forwards;
   }
   .hero-sub strong { color: var(--text); font-weight: 600; }
+
+  /* ── STAT STRIP ── */
   .stat-strip {
     display: flex;
     gap: 0;
@@ -120,30 +142,34 @@
     overflow: hidden;
     opacity: 0;
     animation: fadeUp 0.6s 0.5s forwards;
+    flex-wrap: wrap;
   }
   .stat {
-    flex: 1;
+    flex: 1 1 140px;
     padding: 1.1rem 1.4rem;
     border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
   .stat:last-child { border-right: none; }
   .stat-num {
     font-family: var(--condensed);
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
   }
   .stat-label {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     margin-top: 0.3rem;
   }
+
+  /* ── SECTIONS ── */
   section {
-    padding: 4rem 2.5rem;
+    padding: 4rem 0;
     border-top: 1px solid var(--border);
   }
   .section-header {
@@ -157,6 +183,7 @@
     font-size: 0.7rem;
     color: var(--accent);
     opacity: 0.6;
+    flex-shrink: 0;
   }
   .section-title {
     font-family: var(--condensed);
@@ -165,15 +192,18 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text);
+    white-space: nowrap;
   }
   .section-line {
     flex: 1;
     height: 1px;
     background: var(--border);
   }
+
+  /* ── CERT GRID ── */
   .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
   }
   .cert-card {
@@ -199,7 +229,7 @@
   .cert-card:hover::before { opacity: 1; }
   .cert-issuer {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -207,7 +237,7 @@
   }
   .cert-name {
     font-family: var(--condensed);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text);
     line-height: 1.2;
@@ -225,6 +255,8 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+
+  /* ── LAB GRID ── */
   .lab-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -278,6 +310,8 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
+
+  /* ── TIMELINE ── */
   .timeline {
     position: relative;
     padding-left: 2rem;
@@ -323,6 +357,8 @@
     color: var(--muted);
     margin-top: 0.3rem;
   }
+
+  /* ── CONTACT ── */
   .contact-row {
     display: flex;
     gap: 12px;
@@ -344,9 +380,15 @@
   .contact-btn.primary:hover { background: #33deff; }
   .contact-btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
   .contact-btn.ghost:hover { background: rgba(0,212,255,0.08); }
+
+  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -373,21 +415,8 @@
     color: var(--accent);
     font-size: 0.8em;
   }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate { opacity: 0; animation: fadeUp 0.5s forwards; }
-  .section-sub {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 1.2rem;
-    margin-top: -1.5rem;
-  }
+
+  /* ── SEARCH ── */
   .search-wrap { margin-bottom: 1.8rem; }
   .search-input {
     width: 100%;
@@ -413,251 +442,302 @@
     margin-top: 1rem;
     letter-spacing: 0.1em;
   }
+  .section-sub {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.5rem;
+    margin-top: -1.5rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    nav { padding: 1rem; }
+    .nav-links { gap: 0.8rem; }
+    .nav-links a { font-size: 0.62rem; }
+    .page-wrap { padding: 0 1rem; }
+    .hero { padding: 3rem 0 2.5rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .stat-strip { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+    .cert-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    .lab-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.3rem; }
+    .search-input { max-width: 100%; }
+    footer { padding: 1.2rem 1rem; }
+  }
+
+  /* ── TABLET ── */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .page-wrap { padding: 0 1.5rem; }
+    .lab-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .stat-strip { flex-wrap: wrap; }
+    .stat { flex: 1 1 160px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">T2T<span>SEC</span></div>
-  <ul class="nav-links">
-    <li><a href="#certs">Certs</a></li>
-    <li><a href="#networking">Networking</a></li>
-    <li><a href="#security">Security Research</a></li>
-    <li><a href="#background">Background</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-inner">
+    <div class="nav-logo">T2T<span>SEC</span></div>
+    <ul class="nav-links">
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#networking">Networking</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-tag">Truck-to-Tech Security</div>
-  <h1>
-    <span class="line1">James Shank</span>
-    <span class="line2">T2T Security</span>
-    <span class="line3">Network Engineering & Information Security // Kansas City</span>
-  </h1>
-  <p class="hero-sub">
-    <strong>Network Engineer with a security edge.</strong> <br>20+ years across U.S. Army, Army Reserves, commercial freight and MSP experience. I am now building enterprise networking skills with a grounding in how attackers think about infrastructure. Currently working as an MSP Tier II Technician supporting HIPAA-regulated healthcare environments.
-  </p>
-  <div class="stat-strip">
-    <div class="stat">
-      <div class="stat-num">20+</div>
-      <div class="stat-label">Years of Professional Employment</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">95%+</div>
-      <div class="stat-label">CSAT Score</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">HIPAA and PCI/DSS</div>
-      <div class="stat-label">Regulated Environments</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Pro/Master</div>
-      <div class="stat-label">HackTheBox Ranking</div>
-    </div>
-  </div>
-</div>
+<div class="page-wrap">
 
-<section id="certs">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <span class="section-title">Certifications</span>
-    <div class="section-line"></div>
-  </div>
-  <div class="cert-grid">
-    <div class="cert-card">
-      <div class="cert-issuer">CompTIA</div>
-      <div class="cert-name">A+</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">CompTIA</div>
-      <div class="cert-name">Network+</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">CompTIA</div>
-      <div class="cert-name">Security+</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">CompTIA</div>
-      <div class="cert-name">CSIS</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">PeopleCert</div>
-      <div class="cert-name">ITIL 4 Foundations</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">INE Security</div>
-      <div class="cert-name">eJPT</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">Kaseya</div>
-      <div class="cert-name">Kaseya Certified Technician: Datto RMM</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-issuer">Sophos</div>
-      <div class="cert-name">Sophos Certified Engineer</div>
-      <div class="cert-badge">Active</div>
-    </div>
-    <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
-      <div class="cert-issuer">Cisco</div>
-      <div class="cert-name">CCNA</div>
-      <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
-    </div>
-    <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
-      <div class="cert-issuer">OffSec</div>
-      <div class="cert-name">OSCP</div>
-      <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
+  <div class="hero">
+    <div class="hero-tag">Truck-to-Tech Security</div>
+    <h1>
+      <span class="line1">James Shank</span>
+      <span class="line2">T2T Security</span>
+      <span class="line3">Network Engineering & Information Security // Kansas City</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Network Engineer with a security edge.</strong><br>
+      20+ years across U.S. Army, Army Reserves, commercial freight and MSP experience. Building enterprise networking skills with a grounding in how attackers think about infrastructure. Currently working as an MSP Tier II Technician supporting HIPAA-regulated healthcare environments.
+    </p>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years Professional Employment</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">95%+</div>
+        <div class="stat-label">CSAT Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">HIPAA & PCI/DSS</div>
+        <div class="stat-label">Regulated Environments</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Pro/Master</div>
+        <div class="stat-label">HackTheBox Ranking</div>
+      </div>
     </div>
   </div>
-</section>
 
-<section id="networking">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <span class="section-title">Networking Labs</span>
-    <div class="section-line"></div>
-  </div>
-  <div class="search-wrap">
-    <input class="search-input" id="net-search" type="text" placeholder="Search by tag, title, or keyword..." />
-  </div>
-  <div class="lab-grid" id="net-grid">
-    <div class="lab-card">
-      <div class="lab-card-type">Home Lab</div>
-      <div class="lab-card-title">t2t.local</div>
-      <div class="lab-card-desc">Two-site VMware lab connected via IKEv2 IPsec over a simulated WAN. OPNsense firewalls at each site, routed inter-site traffic, full Windows Server stack including AD DS, ADCS, WSUS, NPAS, RDS, and WDS.</div>
-      <div class="lab-tags">
-        <span class="tag">VMware</span>
-        <span class="tag">OPNsense</span>
-        <span class="tag">IKEv2</span>
-        <span class="tag">IPsec</span>
-        <span class="tag">AD DS</span>
+  <section id="certs">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Certifications</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">CompTIA</div>
+        <div class="cert-name">A+</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">CompTIA</div>
+        <div class="cert-name">Network+</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">CompTIA</div>
+        <div class="cert-name">Security+</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">CompTIA</div>
+        <div class="cert-name">CSIS</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">PeopleCert</div>
+        <div class="cert-name">ITIL 4 Foundations</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">INE Security</div>
+        <div class="cert-name">eJPT</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Kaseya</div>
+        <div class="cert-name">Kaseya Certified Technician: Datto RMM</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Sophos</div>
+        <div class="cert-name">Sophos Certified Engineer</div>
+        <div class="cert-badge">Active</div>
+      </div>
+      <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
+        <div class="cert-issuer">Cisco</div>
+        <div class="cert-name">CCNA</div>
+        <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
+      </div>
+      <div class="cert-card" style="border-color: rgba(255,107,53,0.3);">
+        <div class="cert-issuer">OffSec</div>
+        <div class="cert-name">OSCP</div>
+        <div class="cert-badge" style="color:var(--accent2); background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.2);">Pursuing</div>
       </div>
     </div>
-    <div class="lab-card">
-      <div class="lab-card-type">Cisco Packet Tracer</div>
-      <div class="lab-card-title">VLAN / VTP / Trunking</div>
-      <div class="lab-card-desc">Multilayer switched topology with 802.1Q trunk configuration across a three-tier hierarchy. VTP server/client propagation pushing VLAN info to a 2960 access layer.</div>
-      <div class="lab-tags">
-        <span class="tag">VTP</span>
-        <span class="tag">802.1Q</span>
-        <span class="tag">Trunking</span>
-        <span class="tag">MLS</span>
-      </div>
-    </div>
-  </div>
-  <p class="no-results" id="net-no-results">No results found.</p>
-</section>
+  </section>
 
-<section id="security">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <span class="section-title">Security Research</span>
-    <div class="section-line"></div>
-  </div>
-  <p class="section-sub">CTF writeups and offensive security labs — HackTheBox Pro Hacker, Team OSI</p>
-  <div class="search-wrap">
-    <input class="search-input" id="sec-search" type="text" placeholder="Search by tag, title, or keyword..." />
-  </div>
-  <div class="lab-grid" id="sec-grid">
-    <a href="/labs/htb/logging/" class="lab-card">
-      <div class="lab-card-type">HTB Machine</div>
-      <div class="lab-card-title">Logging</div>
-      <div class="lab-card-desc">Full AD attack chain — shadow credentials via Certipy, DLL hijacking to bypass Defender, ESC1 ADCS abuse, rogue WSUS to SYSTEM.</div>
-      <div class="lab-tags">
-        <span class="tag">ADCS</span>
-        <span class="tag">Shadow Creds</span>
-        <span class="tag">WSUS</span>
-        <span class="tag">DLL Hijack</span>
+  <section id="networking">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Networking Labs</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="search-wrap">
+      <input class="search-input" id="net-search" type="text" placeholder="Search by tag, title, or keyword..." />
+    </div>
+    <div class="lab-grid" id="net-grid">
+      <div class="lab-card">
+        <div class="lab-card-type">Home Lab</div>
+        <div class="lab-card-title">t2t.local</div>
+        <div class="lab-card-desc">Two-site VMware lab connected via IKEv2 IPsec over a simulated WAN. OPNsense firewalls at each site, routed inter-site traffic, full Windows Server stack including AD DS, ADCS, WSUS, NPAS, RDS, and WDS.</div>
+        <div class="lab-tags">
+          <span class="tag">VMware</span>
+          <span class="tag">OPNsense</span>
+          <span class="tag">IKEv2</span>
+          <span class="tag">IPsec</span>
+          <span class="tag">AD DS</span>
+        </div>
       </div>
-    </a>
-    <div class="lab-card">
-      <div class="lab-card-type">HTB Machine</div>
-      <div class="lab-card-title">Garfield</div>
-      <div class="lab-card-desc">Logon script abuse via SYSVOL after discovering DNS resolution to a Read-Only DC instead of the writable DC.</div>
-      <div class="lab-tags">
-        <span class="tag">RODC</span>
-        <span class="tag">SYSVOL</span>
-        <span class="tag">Logon Scripts</span>
+      <div class="lab-card">
+        <div class="lab-card-type">Cisco Packet Tracer</div>
+        <div class="lab-card-title">VLAN / VTP / Trunking</div>
+        <div class="lab-card-desc">Multilayer switched topology with 802.1Q trunk configuration across a three-tier hierarchy. VTP server/client propagation pushing VLAN info to a 2960 access layer.</div>
+        <div class="lab-tags">
+          <span class="tag">VTP</span>
+          <span class="tag">802.1Q</span>
+          <span class="tag">Trunking</span>
+          <span class="tag">MLS</span>
+        </div>
       </div>
     </div>
-    <div class="lab-card">
-      <div class="lab-card-type">HTB Machine</div>
-      <div class="lab-card-title">Variatype</div>
-      <div class="lab-card-desc">fontTools CVE path traversal for webshell write, FontForge CVE cronjob injection, Python .pth abuse via setuptools for root.</div>
-      <div class="lab-tags">
-        <span class="tag">CVE</span>
-        <span class="tag">Path Traversal</span>
-        <span class="tag">Python</span>
-      </div>
-    </div>
-    <div class="lab-card">
-      <div class="lab-card-type">Web App Pentest</div>
-      <div class="lab-card-title">HackSmarter Capstone</div>
-      <div class="lab-card-desc">Full engagement with SysReptor reporting. Findings include SQLi, SSRF, RCE via file upload, session fixation, CSRF, and stored HTML injection.</div>
-      <div class="lab-tags">
-        <span class="tag">SQLi</span>
-        <span class="tag">SSRF</span>
-        <span class="tag">RCE</span>
-        <span class="tag">SysReptor</span>
-      </div>
-    </div>
-  </div>
-  <p class="no-results" id="sec-no-results">No results found.</p>
-</section>
+    <p class="no-results" id="net-no-results">No results found.</p>
+  </section>
 
-<section id="background">
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <span class="section-title">Background</span>
-    <div class="section-line"></div>
-  </div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-date">Present</div>
-      <div class="tl-title">Tier II Technician — IT Voice MSP</div>
-      <div class="tl-desc">Supporting HIPAA-regulated healthcare clients across networking, systems, and security. Building toward a network engineering role.</div>
+  <section id="security">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Security Research</span>
+      <div class="section-line"></div>
     </div>
-    <div class="tl-item">
-      <div class="tl-date">Ongoing</div>
-      <div class="tl-title">WGU B.S. — Cloud and Network Engineering (Cisco)</div>
-      <div class="tl-desc">Pursuing the Cisco specialization track covering CCNA, CyberOps, DevNet, and cloud infrastructure. Degree pivot pending WGU credit evaluation.</div>
+    <p class="section-sub">CTF writeups and offensive security labs — HackTheBox Pro Hacker, Team OSI</p>
+    <div class="search-wrap">
+      <input class="search-input" id="sec-search" type="text" placeholder="Search by tag, title, or keyword..." />
     </div>
-    <div class="tl-item">
-      <div class="tl-date">Prior</div>
-      <div class="tl-title">Commercial Truck Driver — ABF Freight</div>
-      <div class="tl-desc">Regional truck driver, pulling double and triple trailers across the Midwest. It was my first stop after the military, and the origin of the Truck-2-Tech brand.</div>
+    <div class="lab-grid" id="sec-grid">
+      <a href="/labs/htb/logging/" class="lab-card">
+        <div class="lab-card-type">HTB Machine</div>
+        <div class="lab-card-title">Logging</div>
+        <div class="lab-card-desc">Full AD attack chain — shadow credentials via Certipy, DLL hijacking to bypass Defender, ESC1 ADCS abuse, rogue WSUS to SYSTEM.</div>
+        <div class="lab-tags">
+          <span class="tag">ADCS</span>
+          <span class="tag">Shadow Creds</span>
+          <span class="tag">WSUS</span>
+          <span class="tag">DLL Hijack</span>
+        </div>
+      </a>
+      <div class="lab-card">
+        <div class="lab-card-type">HTB Machine</div>
+        <div class="lab-card-title">Garfield</div>
+        <div class="lab-card-desc">Logon script abuse via SYSVOL after discovering DNS resolution to a Read-Only DC instead of the writable DC.</div>
+        <div class="lab-tags">
+          <span class="tag">RODC</span>
+          <span class="tag">SYSVOL</span>
+          <span class="tag">Logon Scripts</span>
+        </div>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-type">HTB Machine</div>
+        <div class="lab-card-title">Variatype</div>
+        <div class="lab-card-desc">fontTools CVE path traversal for webshell write, FontForge CVE cronjob injection, Python .pth abuse via setuptools for root.</div>
+        <div class="lab-tags">
+          <span class="tag">CVE</span>
+          <span class="tag">Path Traversal</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="lab-card">
+        <div class="lab-card-type">Web App Pentest</div>
+        <div class="lab-card-title">HackSmarter Capstone</div>
+        <div class="lab-card-desc">Full engagement with SysReptor reporting. Findings include SQLi, SSRF, RCE via file upload, session fixation, CSRF, and stored HTML injection.</div>
+        <div class="lab-tags">
+          <span class="tag">SQLi</span>
+          <span class="tag">SSRF</span>
+          <span class="tag">RCE</span>
+          <span class="tag">SysReptor</span>
+        </div>
+      </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-date">Prior</div>
-      <div class="tl-title">U.S. Army / Army Reserves</div>
-      <div class="tl-desc">The foundation that made me who I am today. A musician turned leader, I've learned valuable lessons in Loyalty, Duty, Respect, Selfless-Service, Honor, Integrity, and Personal Courage.</div>
-    </div>
-  </div>
-</section>
+    <p class="no-results" id="sec-no-results">No results found.</p>
+  </section>
 
-<section id="contact">
-  <div class="section-header">
-    <span class="section-num">05</span>
-    <span class="section-title">Contact</span>
-    <div class="section-line"></div>
-  </div>
-  <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; max-width:460px;">Open to network engineering, network security, and infrastructure roles. Also available for collaboration and security research. Reach out via GitHub or LinkedIn.</p>
-  <div class="contact-row">
-    <a href="https://github.com/MaLsR6053" class="contact-btn primary">GitHub Profile</a>
-    <a href="https://linkedin.com/in/james-d-shank" class="contact-btn ghost">LinkedIn</a>
-  </div>
-</section>
+  <section id="background">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Background</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Present</div>
+        <div class="tl-title">Tier II Technician — IT Voice MSP</div>
+        <div class="tl-desc">Supporting HIPAA-regulated healthcare clients across networking, systems, and security. Building toward a network engineering role.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Ongoing</div>
+        <div class="tl-title">WGU B.S. — Cloud and Network Engineering (Cisco)</div>
+        <div class="tl-desc">Pursuing the Cisco specialization track covering CCNA, CyberOps, DevNet, and cloud infrastructure. Degree pivot pending WGU credit evaluation.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Prior</div>
+        <div class="tl-title">Commercial Truck Driver — ABF Freight</div>
+        <div class="tl-desc">Regional truck driver, pulling double and triple trailers across the Midwest. First stop after the military, and the origin of the Truck-2-Tech brand.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Prior</div>
+        <div class="tl-title">U.S. Army / Army Reserves</div>
+        <div class="tl-desc">The foundation that made me who I am today. A musician turned leader, with valuable lessons in Loyalty, Duty, Respect, Selfless-Service, Honor, Integrity, and Personal Courage.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Contact</span>
+      <div class="section-line"></div>
+    </div>
+    <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; max-width:460px;">Open to network engineering, network security, and infrastructure roles. Also available for collaboration and security research. Reach out via GitHub or LinkedIn.</p>
+    <div class="contact-row">
+      <a href="https://github.com/MaLsR6053" class="contact-btn primary">GitHub Profile</a>
+      <a href="https://linkedin.com/in/james-d-shank" class="contact-btn ghost">LinkedIn</a>
+    </div>
+  </section>
+
+</div><!-- end page-wrap -->
 
 <footer>
-  <div class="footer-logo">T2T Security</div>
-  <div class="footer-copy">Truck-to-Tech // Kansas City <span class="cursor"></span></div>
+  <div class="footer-inner">
+    <div class="footer-logo">T2T Security</div>
+    <div class="footer-copy">Truck-to-Tech // Kansas City <span class="cursor"></span></div>
+  </div>
 </footer>
 
 <script>
@@ -675,7 +755,6 @@
       noResults.style.display = (query !== '' && visible === 0) ? 'block' : 'none';
     });
   }
-
   initSearch('net-search', 'net-grid', 'net-no-results');
   initSearch('sec-search', 'sec-grid', 'sec-no-results');
 </script>
