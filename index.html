@@ -40,8 +40,6 @@
     pointer-events: none;
     z-index: 1000;
   }
-
-  /* ── NAV ── */
   nav {
     display: flex;
     align-items: center;
@@ -83,15 +81,11 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--accent); }
-
-  /* ── PAGE WRAPPER ── */
   .page-wrap {
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 2rem;
   }
-
-  /* ── HERO ── */
   .hero {
     padding: 5rem 0 4rem;
     position: relative;
@@ -130,8 +124,6 @@
     animation: fadeUp 0.6s 0.35s forwards;
   }
   .hero-sub strong { color: var(--text); font-weight: 600; }
-
-  /* ── STAT STRIP ── */
   .stat-strip {
     display: flex;
     gap: 0;
@@ -165,8 +157,6 @@
     letter-spacing: 0.1em;
     margin-top: 0.3rem;
   }
-
-  /* ── SECTIONS ── */
   section {
     padding: 4rem 0;
     border-top: 1px solid var(--border);
@@ -199,12 +189,12 @@
     background: var(--border);
   }
 
-  /* ── CERT GRID ── */
+  /* ── CERT GRID — 5 columns, equal row heights ── */
   .cert-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
-    align-items: stretch;
+    grid-auto-rows: 1fr;
   }
   .cert-card {
     background: var(--card);
@@ -257,6 +247,7 @@
     padding: 2px 6px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    align-self: flex-start;
   }
 
   /* ── LAB GRID ── */
@@ -313,8 +304,6 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
-
-  /* ── TIMELINE ── */
   .timeline {
     position: relative;
     padding-left: 2rem;
@@ -360,8 +349,6 @@
     color: var(--muted);
     margin-top: 0.3rem;
   }
-
-  /* ── CONTACT ── */
   .contact-row {
     display: flex;
     gap: 12px;
@@ -383,8 +370,6 @@
   .contact-btn.primary:hover { background: #33deff; }
   .contact-btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
   .contact-btn.ghost:hover { background: rgba(0,212,255,0.08); }
-
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 1.5rem 2rem;
@@ -418,8 +403,6 @@
     color: var(--accent);
     font-size: 0.8em;
   }
-
-  /* ── SEARCH ── */
   .search-wrap { margin-bottom: 1.8rem; }
   .search-input {
     width: 100%;
@@ -454,8 +437,6 @@
     margin-bottom: 1.5rem;
     margin-top: -1.5rem;
   }
-
-  /* ── ANIMATIONS ── */
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -473,7 +454,7 @@
     .stat-strip { flex-direction: column; }
     .stat { border-right: none; border-bottom: 1px solid var(--border); }
     .stat:last-child { border-bottom: none; }
-    .cert-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; }
     .lab-grid { grid-template-columns: 1fr; }
     .section-title { font-size: 1.3rem; }
     .search-input { max-width: 100%; }
@@ -483,6 +464,7 @@
   /* ── TABLET ── */
   @media (min-width: 601px) and (max-width: 900px) {
     .page-wrap { padding: 0 1.5rem; }
+    .cert-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; }
     .lab-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
     .stat-strip { flex-wrap: wrap; }
     .stat { flex: 1 1 160px; }
@@ -734,7 +716,7 @@
     </div>
   </section>
 
-</div><!-- end page-wrap -->
+</div>
 
 <footer>
   <div class="footer-inner">
