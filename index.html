@@ -17,7 +17,7 @@
     --accent2: #ff6b35;
     --accent3: #39d353;
     --text: #e8edf2;
-    --muted: #5a7a8a;
+    --muted: #7a9aaa;
     --mono: 'Share Tech Mono', monospace;
     --sans: 'Barlow', sans-serif;
     --condensed: 'Barlow Condensed', sans-serif;
@@ -28,7 +28,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
     min-height: 100vh;
   }
@@ -188,8 +188,6 @@
     height: 1px;
     background: var(--border);
   }
-
-  /* ── CERT GRID — 5 columns, equal row heights ── */
   .cert-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -249,8 +247,6 @@
     letter-spacing: 0.1em;
     align-self: flex-start;
   }
-
-  /* ── LAB GRID ── */
   .lab-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -442,8 +438,6 @@
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
-  /* ── MOBILE ── */
   @media (max-width: 600px) {
     nav { padding: 1rem; }
     .nav-links { gap: 0.8rem; }
@@ -460,8 +454,6 @@
     .search-input { max-width: 100%; }
     footer { padding: 1.2rem 1rem; }
   }
-
-  /* ── TABLET ── */
   @media (min-width: 601px) and (max-width: 900px) {
     .page-wrap { padding: 0 1.5rem; }
     .cert-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; }
@@ -493,7 +485,7 @@
     <h1>
       <span class="line1">James Shank</span>
       <span class="line2">T2T Security</span>
-      <span class="line3">Network Engineering & Information Security // Kansas City</span>
+      <span class="line3">Network Engineering &amp; Information Security // Kansas City</span>
     </h1>
     <p class="hero-sub">
       <strong>Network Engineer with a security edge.</strong><br>
@@ -501,7 +493,7 @@
     </p>
     <div class="stat-strip">
       <div class="stat">
-        <div class="stat-num">20+</div>
+        <div class="stat-num" style="font-size: 2rem; color: #a8ccd8;">20+</div>
         <div class="stat-label">Years Professional Employment</div>
       </div>
       <div class="stat">
@@ -509,7 +501,7 @@
         <div class="stat-label">CSAT Score</div>
       </div>
       <div class="stat">
-        <div class="stat-num">HIPAA & PCI/DSS</div>
+        <div class="stat-num">HIPAA &amp; PCI/DSS</div>
         <div class="stat-label">Regulated Environments</div>
       </div>
       <div class="stat">
@@ -585,7 +577,7 @@
       <span class="section-title">Networking Labs</span>
       <div class="section-line"></div>
     </div>
-        <p class="section-sub">Network labs in preparation for the CCNA certification.</p>
+    <p class="section-sub">Network labs in preparation for the CCNA certification.</p>
     <div class="search-wrap">
       <input class="search-input" id="net-search" type="text" placeholder="Search by tag, title, or keyword..." />
     </div>
