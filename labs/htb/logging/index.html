@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +22,7 @@
     --mono: 'Share Tech Mono', monospace;
     --sans: 'Barlow', sans-serif;
     --condensed: 'Barlow Condensed', sans-serif;
+    --max: 1100px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; }
@@ -33,39 +33,39 @@
     pointer-events: none; z-index: 1000;
   }
 
+  /* ── NAV ── */
   nav {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 2.5rem;
+    padding: 1.2rem 2rem;
     border-bottom: 1px solid var(--border);
     background: rgba(10,12,15,0.95);
     backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 100;
   }
-  .nav-logo { font-family: var(--condensed); font-size: 1.4rem; font-weight: 800; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; text-decoration: none; }
-  .nav-logo span { color: var(--accent2); }
+  .nav-inner {
+    width: 100%; max-width: var(--max); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--condensed); font-size: 1.4rem; font-weight: 800; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; text-decoration: none; flex-shrink: 0; }
+  .nav-logo span { color: #ffffff; }
   .nav-back { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
   .nav-back:hover { color: var(--accent); }
   .nav-back::before { content: '← '; }
 
-  .writeup-header {
-    padding: 3.5rem 2.5rem 2.5rem;
-    border-bottom: 1px solid var(--border);
-    max-width: 860px;
-  }
-  .wh-meta {
-    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-    margin-bottom: 1rem;
-  }
-  .meta-tag {
-    font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase;
-    letter-spacing: 0.12em; padding: 3px 8px; border-radius: 2px;
-  }
+  /* ── PAGE WRAP ── */
+  .page-wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+  /* ── WRITEUP HEADER ── */
+  .writeup-header { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--border); }
+  .wh-meta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+  .meta-tag { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 3px 8px; border-radius: 2px; }
   .meta-type { background: rgba(0,212,255,0.08); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
   .meta-diff-hard { background: rgba(224,75,74,0.1); color: #e04b4a; border: 1px solid rgba(224,75,74,0.25); }
   .meta-diff-med { background: rgba(240,192,64,0.1); color: var(--warn); border: 1px solid rgba(240,192,64,0.25); }
   .meta-diff-easy { background: rgba(57,211,83,0.08); color: var(--accent3); border: 1px solid rgba(57,211,83,0.2); }
   .meta-os { background: rgba(255,107,53,0.08); color: var(--accent2); border: 1px solid rgba(255,107,53,0.2); }
+  .meta-net { background: rgba(0,212,255,0.08); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
   .meta-date { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.08em; }
-
   .writeup-header h1 {
     font-family: var(--condensed); font-size: clamp(2.2rem, 6vw, 3.8rem);
     font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
@@ -74,30 +74,22 @@
   .writeup-header h1 span { color: var(--accent); }
   .wh-summary { font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.7; }
 
+  /* ── INFO STRIP ── */
   .info-strip {
     display: flex; gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 4px; overflow: hidden;
-    margin: 2rem 2.5rem 0;
-    max-width: 600px;
+    border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+    margin: 2rem 0 0; max-width: 600px; flex-wrap: wrap;
   }
-  .info-cell { flex: 1; padding: 0.9rem 1.2rem; border-right: 1px solid var(--border); }
+  .info-cell { flex: 1 1 100px; padding: 0.9rem 1.2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .info-cell:last-child { border-right: none; }
   .info-label { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.3rem; }
   .info-val { font-family: var(--condensed); font-size: 1rem; font-weight: 700; color: var(--text); }
 
-  .content-wrap {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 0;
-    min-height: 80vh;
-  }
+  /* ── CONTENT LAYOUT ── */
+  .content-wrap { display: grid; grid-template-columns: 200px 1fr; gap: 0; min-height: 80vh; margin-top: 0; }
 
-  .sidebar {
-    border-right: 1px solid var(--border);
-    padding: 2rem 1.5rem;
-    position: sticky; top: 0; height: fit-content;
-  }
+  /* ── SIDEBAR ── */
+  .sidebar { border-right: 1px solid var(--border); padding: 2rem 1.5rem; position: sticky; top: 65px; height: fit-content; }
   .sidebar-label { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 1rem; }
   .toc-list { list-style: none; }
   .toc-list li { margin-bottom: 0.2rem; }
@@ -109,19 +101,13 @@
   }
   .toc-list a:hover { color: var(--accent); border-left-color: var(--accent); background: rgba(0,212,255,0.04); }
   .toc-list a.active { color: var(--accent); border-left-color: var(--accent); }
-
   .toc-divider { height: 1px; background: var(--border); margin: 1rem 0; }
-
-  .flag-box {
-    margin-top: 1.5rem;
-    background: var(--card); border: 1px solid var(--border); border-radius: 4px;
-    padding: 0.9rem 1rem;
-  }
+  .flag-box { margin-top: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 0.9rem 1rem; }
   .flag-label { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
   .flag-val { font-family: var(--mono); font-size: 0.72rem; color: var(--accent3); word-break: break-all; }
 
-  .main-content { padding: 2.5rem 3rem 4rem; max-width: 680px; }
-
+  /* ── MAIN CONTENT ── */
+  .main-content { padding: 2.5rem 2.5rem 4rem; }
   .section { margin-bottom: 3rem; }
   .section-heading {
     font-family: var(--condensed); font-size: 1.3rem; font-weight: 800;
@@ -131,237 +117,338 @@
     display: flex; align-items: center; gap: 0.7rem;
   }
   .section-num { font-family: var(--mono); font-size: 0.65rem; color: var(--accent); opacity: 0.7; }
-
   p { font-size: 0.92rem; color: #a8b8c4; margin-bottom: 0.9rem; line-height: 1.75; }
   strong { color: var(--text); font-weight: 600; }
 
+  /* ── CMD BLOCK WITH COPY ── */
+  .cmd-wrap { position: relative; margin: 1.2rem 0; }
   .cmd-block {
     background: #080b0e; border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: 0 4px 4px 0;
-    padding: 1rem 1.2rem; margin: 1.2rem 0;
+    padding: 1rem 1.2rem; padding-right: 3.5rem;
     font-family: var(--mono); font-size: 0.75rem;
     color: var(--accent3); line-height: 1.6;
-    overflow-x: auto;
+    overflow-x: auto; white-space: pre;
   }
   .cmd-block .prompt { color: var(--accent2); }
   .cmd-block .comment { color: var(--muted); }
   .cmd-block .output { color: #6a8a9a; }
-
-  .callout {
-    background: var(--card); border: 1px solid var(--border);
-    border-left: 3px solid var(--warn);
-    border-radius: 0 4px 4px 0;
-    padding: 0.9rem 1.1rem; margin: 1.2rem 0;
+  .copy-btn {
+    position: absolute; top: 0.5rem; right: 0.5rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 3px;
+    padding: 3px 8px; font-family: var(--mono); font-size: 0.6rem;
+    color: var(--muted); cursor: pointer; text-transform: uppercase;
+    letter-spacing: 0.08em; opacity: 0;
+    transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+    user-select: none; z-index: 1;
   }
+  .cmd-wrap:hover .copy-btn { opacity: 1; }
+  .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .copy-btn.copied { color: var(--accent3); border-color: var(--accent3); opacity: 1; }
+
+  /* ── CALLOUT ── */
+  .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--warn); border-radius: 0 4px 4px 0; padding: 0.9rem 1.1rem; margin: 1.2rem 0; }
   .callout-label { font-family: var(--mono); font-size: 0.6rem; color: var(--warn); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
   .callout p { margin: 0; font-size: 0.85rem; }
 
-  .finding-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 4px; padding: 1rem 1.2rem; margin: 1rem 0;
-  }
+  /* ── FINDING CARD ── */
+  .finding-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.2rem; margin: 1rem 0; }
   .finding-title { font-family: var(--condensed); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
   .finding-desc { font-size: 0.82rem; color: var(--muted); }
 
+  /* ── STEP LIST ── */
   .step-list { list-style: none; margin: 0.8rem 0 1.2rem; }
-  .step-list li {
-    font-size: 0.88rem; color: #a8b8c4; padding: 0.4rem 0 0.4rem 1.4rem;
-    position: relative; border-bottom: 1px solid rgba(30,45,61,0.5);
-  }
+  .step-list li { font-size: 0.88rem; color: #a8b8c4; padding: 0.4rem 0 0.4rem 1.4rem; position: relative; border-bottom: 1px solid rgba(30,45,61,0.5); }
   .step-list li:last-child { border-bottom: none; }
-  .step-list li::before {
-    content: '▸';
-    position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.55rem;
-  }
+  .step-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; top: 0.55rem; }
 
+  /* ── TAGS ── */
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.8rem 0; }
-  .tag {
-    font-family: var(--mono); font-size: 0.6rem; color: var(--accent);
-    background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15);
-    border-radius: 2px; padding: 2px 7px; text-transform: uppercase; letter-spacing: 0.08em;
-  }
+  .tag { font-family: var(--mono); font-size: 0.6rem; color: var(--accent); background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); border-radius: 2px; padding: 2px 7px; text-transform: uppercase; letter-spacing: 0.08em; }
 
-  .chain-steps {
-    display: flex; flex-direction: column; gap: 0; margin: 1.2rem 0;
-    border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
-  }
-  .chain-step {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--border);
-    background: var(--card);
-  }
+  /* ── CHAIN STEPS ── */
+  .chain-steps { display: flex; flex-direction: column; gap: 0; margin: 1.2rem 0; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .chain-step { display: flex; align-items: flex-start; gap: 1rem; padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--border); background: var(--card); }
   .chain-step:last-child { border-bottom: none; }
-  .chain-arrow { color: var(--accent2); font-family: var(--mono); font-size: 0.8rem; flex-shrink: 0; }
+  .chain-arrow { color: var(--accent2); font-family: var(--mono); font-size: 0.8rem; flex-shrink: 0; padding-top: 2px; }
   .chain-title { font-family: var(--condensed); font-size: 0.95rem; font-weight: 700; color: var(--text); }
-  .chain-desc { font-size: 0.78rem; color: var(--muted); margin-top: 1px; }
+  .chain-desc { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
 
-  footer {
-    border-top: 1px solid var(--border); padding: 1.5rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  }
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; }
+  .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
   .footer-logo { font-family: var(--condensed); font-size: 1rem; font-weight: 800; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
   .footer-copy { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
   .cursor::after { content: '▋'; animation: blink 1s step-end infinite; color: var(--accent); font-size: 0.8em; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── MOBILE ── */
+  @media (max-width: 700px) {
+    nav { padding: 1rem; }
+    .page-wrap { padding: 0 1rem; }
+    .writeup-header { padding: 2rem 0 1.5rem; }
+    .content-wrap { grid-template-columns: 1fr; }
+    .sidebar {
+      position: static;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .flag-box { margin-top: 1rem; }
+    .main-content { padding: 1.5rem 0 3rem; }
+    .cmd-block { font-size: 0.68rem; }
+    .copy-btn { opacity: 1; }
+    .info-strip { max-width: 100%; }
+    .info-cell { flex: 1 1 80px; }
+    footer { padding: 1.2rem 1rem; }
+  }
+
+  /* ── TABLET ── */
+  @media (min-width: 701px) and (max-width: 960px) {
+    .page-wrap { padding: 0 1.5rem; }
+    .content-wrap { grid-template-columns: 170px 1fr; }
+    .main-content { padding: 2rem 1.5rem 3rem; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">T2T<span>SEC</span></a>
-  <a href="/#labs" class="nav-back">All Labs</a>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">T2T<span>SEC</span></a>
+    <a href="/#security" class="nav-back">All Labs</a>
+    <!-- For networking labs change href to /#networking -->
+  </div>
 </nav>
 
-<div class="writeup-header">
-  <div class="wh-meta">
-    <span class="meta-tag meta-type">HTB Machine</span>
-    <span class="meta-tag meta-diff-hard">Hard</span>
-    <span class="meta-tag meta-os">Windows</span>
-    <span class="meta-date">YYYY-MM-DD</span>
+<div class="page-wrap">
+
+  <!-- ═══ HEADER — swap meta tags for networking labs ═══ -->
+  <div class="writeup-header">
+    <div class="wh-meta">
+      <span class="meta-tag meta-type">HTB Machine</span>
+      <!-- Difficulty: meta-diff-hard / meta-diff-med / meta-diff-easy -->
+      <span class="meta-tag meta-diff-hard">Hard</span>
+      <!-- For networking labs replace OS tag with:
+           <span class="meta-tag meta-net">Cisco Packet Tracer</span>
+           or <span class="meta-tag meta-net">Home Lab</span> -->
+      <span class="meta-tag meta-os">Windows</span>
+      <span class="meta-date">YYYY-MM-DD</span>
+    </div>
+    <h1>Logging<span>.</span></h1>
+    <p class="wh-summary">Full Active Directory attack chain from credential discovery through rogue WSUS to SYSTEM. Covers shadow credentials, ADCS ESC1 abuse, and DLL hijacking to bypass Defender.</p>
   </div>
-  <h1>Logging<span>.</span></h1>
-  <p class="wh-summary">Full Active Directory attack chain from credential discovery through rogue WSUS to SYSTEM. Covers shadow credentials, ADCS ESC1 abuse, and DLL hijacking to bypass Defender.</p>
-</div>
 
-<div class="info-strip">
-  <div class="info-cell">
-    <div class="info-label">Platform</div>
-    <div class="info-val">HackTheBox</div>
+  <!-- ═══ INFO STRIP — swap labels for networking labs ═══
+       Platform → "Home Lab" or "Cisco PT"
+       OS       → "VMware" or "Packet Tracer"
+       Difficulty → "Intermediate" etc.
+       Status   → "Complete" or "In Progress"
+  ════════════════════════════════════════════════════════ -->
+  <div class="info-strip">
+    <div class="info-cell">
+      <div class="info-label">Platform</div>
+      <div class="info-val">HackTheBox</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">OS</div>
+      <div class="info-val">Windows</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Difficulty</div>
+      <div class="info-val" style="color:#e04b4a;">Hard</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Status</div>
+      <div class="info-val" style="color:var(--accent3);">Retired</div>
+    </div>
   </div>
-  <div class="info-cell">
-    <div class="info-label">OS</div>
-    <div class="info-val">Windows</div>
-  </div>
-  <div class="info-cell">
-    <div class="info-label">Difficulty</div>
-    <div class="info-val" style="color:#e04b4a;">Hard</div>
-  </div>
-  <div class="info-cell">
-    <div class="info-label">Status</div>
-    <div class="info-val" style="color:var(--accent3);">Retired</div>
-  </div>
-</div>
 
-<div class="content-wrap">
-  <aside class="sidebar">
-    <div class="sidebar-label">Contents</div>
-    <ul class="toc-list">
-      <li><a href="#recon">01 Recon</a></li>
-      <li><a href="#foothold">02 Foothold</a></li>
-      <li><a href="#lateral">03 Lateral Movement</a></li>
-      <li><a href="#privesc">04 Privilege Escalation</a></li>
-      <li><a href="#lessons">05 Lessons Learned</a></li>
-    </ul>
-    <div class="toc-divider"></div>
-    <div class="flag-box">
-      <div class="flag-label">User Flag</div>
-      <div class="flag-val">HTB{redacted}</div>
-    </div>
-    <div class="flag-box" style="margin-top:0.6rem;">
-      <div class="flag-label">Root Flag</div>
-      <div class="flag-val">HTB{redacted}</div>
-    </div>
-  </aside>
-
-  <main class="main-content">
-
-    <div class="section" id="recon">
-      <div class="section-heading"><span class="section-num">01</span> Recon</div>
-      <p>Initial nmap scan against the target to enumerate open ports and service versions.</p>
-      <div class="cmd-block">
-        <span class="prompt">$ </span>nmap -sC -sV -oA logging 10.10.11.X<br>
-        <span class="output">PORT     STATE SERVICE       VERSION<br>
-53/tcp   open  domain        Simple DNS Plus<br>
-88/tcp   open  kerberos-sec  Microsoft Windows Kerberos<br>
-445/tcp  open  microsoft-ds<br>
-3268/tcp open  ldap          Microsoft Windows Active Directory LDAP</span>
-      </div>
-      <p>Replace the above with your actual scan output. Note any interesting services, unusual ports, or version disclosures here.</p>
-      <div class="callout">
-        <div class="callout-label">Note</div>
-        <p>Use this callout block for observations, gotchas, or anything worth flagging mid-section.</p>
-      </div>
-    </div>
-
-    <div class="section" id="foothold">
-      <div class="section-heading"><span class="section-num">02</span> Foothold</div>
-      <p>Describe how initial access was obtained. Include credentials found, services abused, and tools used.</p>
-      <div class="cmd-block">
-        <span class="comment"># Example: shadow credentials attack against MSA account<br></span>
-        <span class="prompt">$ </span>certipy shadow auto -u 'user@domain.local' -p 'password' -account 'target$'
-      </div>
-      <div class="tag-row">
-        <span class="tag">Certipy</span>
-        <span class="tag">Shadow Credentials</span>
-        <span class="tag">MSA</span>
-        <span class="tag">Kerberos</span>
-      </div>
-    </div>
-
-    <div class="section" id="lateral">
-      <div class="section-heading"><span class="section-num">03</span> Lateral Movement</div>
-      <p>Describe the path from initial foothold to a privileged account or higher-value target.</p>
-      <div class="finding-card">
-        <div class="finding-title">DLL Hijacking — Defender Bypass</div>
-        <div class="finding-desc">Compiled a raw Winsock TCP reverse shell with i686-w64-mingw32-gcc placed in a hijackable DLL load path. Evaded Defender without obfuscation due to the raw socket implementation.</div>
-      </div>
-      <div class="cmd-block">
-        <span class="prompt">$ </span>i686-w64-mingw32-gcc shell.c -o evil.dll -shared -lws2_32
-      </div>
-    </div>
-
-    <div class="section" id="privesc">
-      <div class="section-heading"><span class="section-num">04</span> Privilege Escalation</div>
-      <p>Full attack chain summary from service account to SYSTEM via rogue WSUS.</p>
-      <div class="chain-steps">
-        <div class="chain-step">
-          <div class="chain-arrow">01</div>
-          <div>
-            <div class="chain-title">ADCS ESC1 — Certificate Request</div>
-            <div class="chain-desc">Abused the UpdateSrv template to obtain a certificate for a privileged account via Certipy.</div>
-          </div>
-        </div>
-        <div class="chain-step">
-          <div class="chain-arrow">02</div>
-          <div>
-            <div class="chain-title">Rogue WSUS Server</div>
-            <div class="chain-desc">Stood up a malicious WSUS server and pushed a fake update to execute as SYSTEM on the target.</div>
-          </div>
-        </div>
-        <div class="chain-step">
-          <div class="chain-arrow">03</div>
-          <div>
-            <div class="chain-title">SYSTEM Shell</div>
-            <div class="chain-desc">Caught the callback in Penelope. Confirmed NT AUTHORITY\SYSTEM and retrieved root flag.</div>
-          </div>
-        </div>
-      </div>
-      <div class="cmd-block">
-        <span class="comment"># Confirm privilege<br></span>
-        <span class="prompt">C:\> </span>whoami<br>
-        <span class="output">nt authority\system</span>
-      </div>
-    </div>
-
-    <div class="section" id="lessons">
-      <div class="section-heading"><span class="section-num">05</span> Lessons Learned</div>
-      <ul class="step-list">
-        <li>Replace these with your actual takeaways from the machine.</li>
-        <li>What tripped you up and how did you work through it?</li>
-        <li>Any tools or techniques you hadn't used before?</li>
-        <li>What would you do differently on a real engagement?</li>
+  <div class="content-wrap">
+    <aside class="sidebar">
+      <div class="sidebar-label">Contents</div>
+      <!-- HTB TOC -->
+      <ul class="toc-list">
+        <li><a href="#recon">01 Recon</a></li>
+        <li><a href="#foothold">02 Foothold</a></li>
+        <li><a href="#lateral">03 Lateral Movement</a></li>
+        <li><a href="#privesc">04 Privilege Escalation</a></li>
+        <li><a href="#lessons">05 Lessons Learned</a></li>
       </ul>
-    </div>
+      <!-- Networking lab TOC (swap in instead):
+      <ul class="toc-list">
+        <li><a href="#objectives">01 Objectives</a></li>
+        <li><a href="#topology">02 Topology</a></li>
+        <li><a href="#config">03 Configuration</a></li>
+        <li><a href="#verify">04 Verification</a></li>
+        <li><a href="#lessons">05 Lessons Learned</a></li>
+      </ul>
+      -->
+      <div class="toc-divider"></div>
+      <!-- Remove flag boxes for networking labs -->
+      <div class="flag-box">
+        <div class="flag-label">User Flag</div>
+        <div class="flag-val">HTB{redacted}</div>
+      </div>
+      <div class="flag-box" style="margin-top:0.6rem;">
+        <div class="flag-label">Root Flag</div>
+        <div class="flag-val">HTB{redacted}</div>
+      </div>
+    </aside>
 
-  </main>
-</div>
+    <main class="main-content">
+
+      <div class="section" id="recon">
+        <div class="section-heading"><span class="section-num">01</span> Recon</div>
+        <p>Initial nmap scan against the target to enumerate open ports and service versions.</p>
+        <div class="cmd-wrap">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <div class="cmd-block"><span class="prompt">$ </span>nmap -sC -sV -oA logging 10.10.11.X
+<span class="output">PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos
+445/tcp  open  microsoft-ds
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP</span></div>
+        </div>
+        <p>Replace the above with your actual scan output. Note any interesting services, unusual ports, or version disclosures here.</p>
+        <div class="callout">
+          <div class="callout-label">Note</div>
+          <p>Use this callout block for observations, gotchas, or anything worth flagging mid-section.</p>
+        </div>
+      </div>
+
+      <div class="section" id="foothold">
+        <div class="section-heading"><span class="section-num">02</span> Foothold</div>
+        <p>Describe how initial access was obtained. Include credentials found, services abused, and tools used.</p>
+        <div class="cmd-wrap">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <div class="cmd-block"><span class="comment"># Shadow credentials attack against MSA account</span>
+<span class="prompt">$ </span>certipy shadow auto -u 'user@domain.local' -p 'password' -account 'target$'</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Certipy</span>
+          <span class="tag">Shadow Credentials</span>
+          <span class="tag">MSA</span>
+          <span class="tag">Kerberos</span>
+        </div>
+      </div>
+
+      <div class="section" id="lateral">
+        <div class="section-heading"><span class="section-num">03</span> Lateral Movement</div>
+        <p>Describe the path from initial foothold to a privileged account or higher-value target.</p>
+        <div class="finding-card">
+          <div class="finding-title">DLL Hijacking — Defender Bypass</div>
+          <div class="finding-desc">Compiled a raw Winsock TCP reverse shell with i686-w64-mingw32-gcc placed in a hijackable DLL load path. Evaded Defender without obfuscation due to the raw socket implementation.</div>
+        </div>
+        <div class="cmd-wrap">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <div class="cmd-block"><span class="prompt">$ </span>i686-w64-mingw32-gcc shell.c -o evil.dll -shared -lws2_32</div>
+        </div>
+      </div>
+
+      <div class="section" id="privesc">
+        <div class="section-heading"><span class="section-num">04</span> Privilege Escalation</div>
+        <p>Full attack chain summary from service account to SYSTEM via rogue WSUS.</p>
+        <div class="chain-steps">
+          <div class="chain-step">
+            <div class="chain-arrow">01</div>
+            <div>
+              <div class="chain-title">ADCS ESC1 — Certificate Request</div>
+              <div class="chain-desc">Abused the UpdateSrv template to obtain a certificate for a privileged account via Certipy.</div>
+            </div>
+          </div>
+          <div class="chain-step">
+            <div class="chain-arrow">02</div>
+            <div>
+              <div class="chain-title">Rogue WSUS Server</div>
+              <div class="chain-desc">Stood up a malicious WSUS server and pushed a fake update to execute as SYSTEM on the target.</div>
+            </div>
+          </div>
+          <div class="chain-step">
+            <div class="chain-arrow">03</div>
+            <div>
+              <div class="chain-title">SYSTEM Shell</div>
+              <div class="chain-desc">Caught the callback in Penelope. Confirmed NT AUTHORITY\SYSTEM and retrieved root flag.</div>
+            </div>
+          </div>
+        </div>
+        <div class="cmd-wrap">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <div class="cmd-block"><span class="comment"># Confirm privilege</span>
+<span class="prompt">C:\> </span>whoami
+<span class="output">nt authority\system</span></div>
+        </div>
+      </div>
+
+      <div class="section" id="lessons">
+        <div class="section-heading"><span class="section-num">05</span> Lessons Learned</div>
+        <ul class="step-list">
+          <li>Replace these with your actual takeaways from the machine.</li>
+          <li>What tripped you up and how did you work through it?</li>
+          <li>Any tools or techniques you hadn't used before?</li>
+          <li>What would you do differently on a real engagement?</li>
+        </ul>
+      </div>
+
+    </main>
+  </div>
+
+</div><!-- end page-wrap -->
 
 <footer>
-  <div class="footer-logo">T2T Security</div>
-  <div class="footer-copy">Truck-to-Tech // <span class="cursor"></span></div>
+  <div class="footer-inner">
+    <div class="footer-logo">T2T Security</div>
+    <div class="footer-copy">Truck-to-Tech // <span class="cursor"></span></div>
+  </div>
 </footer>
+
+<script>
+  /* ── COPY BUTTON ── */
+  function copyCmd(btn) {
+    const block = btn.nextElementSibling;
+    // Strip HTML tags to get plain text only
+    const text = block.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  /* ── ACTIVE TOC HIGHLIGHT ── */
+  const sections = document.querySelectorAll('.section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
 
 </body>
 </html>
-
