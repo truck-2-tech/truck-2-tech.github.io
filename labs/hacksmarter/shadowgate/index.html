@@ -308,21 +308,56 @@ The client has provided you with VPN access to their internal network, but no cr
         <div class="cmd-wrap">
           <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
           <div class="cmd-block"><span class="prompt">$ </span>nmap -sC -sV -oA logging 10.10.11.X
-<span class="output">53/tcp    open  domain        Simple DNS Plus
-80/tcp    open  http          Microsoft IIS httpd 10.0
-88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-01-15 13:41:20Z)
-135/tcp   open  msrpc         Microsoft Windows RPC
-139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
-389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: shadow.gate, Site: Default-First-Site-Name)
-445/tcp   open  microsoft-ds?
-464/tcp   open  kpasswd5?
-593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
-636/tcp   open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: shadow.gate, Site: Default-First-Site-Name)
-3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: shadow.gate, Site: Default-First-Site-Name)
-3269/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: shadow.gate, Site: Default-First-Site-Name)
-3389/tcp  open  ms-wbt-server Microsoft Terminal Services
-5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-9389/tcp  open  mc-nmf        .NET Message Framing</span></div>
+<span class="output">┌──(kali㉿kali 05/22/2026 06:44:06 PM)-[~]
+└─$ ping 10.0.23.96                                        
+PING 10.0.23.96 (10.0.23.96) 56(84) bytes of data.
+64 bytes from 10.0.23.96: icmp_seq=1 ttl=126 time=37.2 ms
+64 bytes from 10.0.23.96: icmp_seq=2 ttl=126 time=40.6 ms
+^C
+--- 10.0.23.96 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1003ms
+rtt min/avg/max/mdev = 37.175/38.887/40.599/1.712 ms
+                                                                                                                                                             
+┌──(kali㉿kali 05/22/2026 06:44:14 PM)-[~]
+└─$ rustscan -a 10.0.23.96 -- -A                                                                                           
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: http://discord.skerritt.blog         :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+TreadStone was here 🚀
+
+[~] The config file is expected to be at "/home/kali/.rustscan.toml"
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+[!] Your file limit is very small, which negatively impacts RustScan's speed. Use the Docker image, or up the Ulimit with '--ulimit 5000'. 
+Open 10.0.23.96:53
+Open 10.0.23.96:88
+Open 10.0.23.96:80
+Open 10.0.23.96:135
+Open 10.0.23.96:139
+Open 10.0.23.96:389
+Open 10.0.23.96:445
+Open 10.0.23.96:464
+Open 10.0.23.96:593
+Open 10.0.23.96:636
+Open 10.0.23.96:3268
+Open 10.0.23.96:3269
+Open 10.0.23.96:3389
+Open 10.0.23.96:5985
+Open 10.0.23.96:9389
+Open 10.0.23.96:49664
+Open 10.0.23.96:49668
+Open 10.0.23.96:49667
+Open 10.0.23.96:49885
+Open 10.0.23.96:49887
+Open 10.0.23.96:49899
+Open 10.0.23.96:49913
+Open 10.0.23.96:49931
+Open 10.0.23.96:53355</span></div>
         </div>
         <p>Pretty standard for a domain controller. We'll target SMB first.</p>
         <div class="callout">
