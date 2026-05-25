@@ -368,7 +368,7 @@ Open 10.0.23.96:53355</span></div>
       <p>Testing to see what level of access I have as an anonymous user.</p>
         <div class="cmd-wrap">
           <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-          <div class="cmd-block"><span class="prompt">$ </span> 
+          <div class="cmd-block"><span class="prompt"></span> 
 <span class="output"></span>┌──(kali㉿kali 05/22/2026 06:45:53 PM)-[~]
 └─$ nxc smb 10.0.23.96 -u '' -p ''                                                                            
 SMB         10.0.23.96      445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:shadow.gate) (signing:False) (SMBv1:None)
@@ -385,11 +385,8 @@ SMB         10.0.23.96      445    DC01             [-] Error enumerating shares
 SMB         10.0.23.96      445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:shadow.gate) (signing:False) (SMBv1:None)
 SMB         10.0.23.96      445    DC01             [-] shadow.gate\guest: STATUS_ACCOUNT_DISABLED </div>
         </div>
-        <p>Pretty standard for a domain controller. We'll target SMB first.</p>
-        <div class="callout">
-          <div class="callout-label">Note</div>
-          <p>Lots of open ports, but seeing as we do not have credentials, it's time to test anonymous access.</p>
-        </div>
+        <p>Confirmed anonymous access. </p>
+        
       </div>
 
 
