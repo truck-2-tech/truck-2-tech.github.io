@@ -307,7 +307,7 @@ The client has provided you with VPN access to their internal network, but no cr
         <p>Initial nmap scan against the target to enumerate open ports and service versions.</p>
         <div class="cmd-wrap">
           <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
-          <div class="cmd-block"><span class="prompt">$ </span>nmap -sC -sV -oA logging 10.10.11.X
+          <div class="cmd-block"><span class="prompt">$ </span>rustscan -a 10.0.23.96 -- -A 
 <span class="output">┌──(kali㉿kali 05/22/2026 06:44:06 PM)-[~]
 └─$ ping 10.0.23.96                                        
 PING 10.0.23.96 (10.0.23.96) 56(84) bytes of data.
@@ -362,9 +362,36 @@ Open 10.0.23.96:53355</span></div>
         <p>Pretty standard for a domain controller. We'll target SMB first.</p>
         <div class="callout">
           <div class="callout-label">Note</div>
-          <p>Use this callout block for observations, gotchas, or anything worth flagging mid-section.</p>
+          <p>Lots of open ports, but seeing as we do not have credentials, it's time to test anonymous access.</p>
         </div>
       </div>
+      <p>Testing to see what level of access I have as an anonymous user.</p>
+        <div class="cmd-wrap">
+          <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          <div class="cmd-block"><span class="prompt">$ </span> 
+<span class="output"></span>┌──(kali㉿kali 05/22/2026 06:45:53 PM)-[~]
+└─$ nxc smb 10.0.23.96 -u '' -p ''                                                                            
+SMB         10.0.23.96      445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:shadow.gate) (signing:False) (SMBv1:None)
+SMB         10.0.23.96      445    DC01             [+] shadow.gate\: 
+                                                                                                                                                             
+┌──(kali㉿kali 05/22/2026 06:46:26 PM)-[~]
+└─$ nxc smb 10.0.23.96 -u '' -p '' --shares
+SMB         10.0.23.96      445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:shadow.gate) (signing:False) (SMBv1:None)
+SMB         10.0.23.96      445    DC01             [+] shadow.gate\: 
+SMB         10.0.23.96      445    DC01             [-] Error enumerating shares: STATUS_ACCESS_DENIED
+                                                                                                                                                             
+┌──(kali㉿kali 05/22/2026 06:46:33 PM)-[~]
+└─$ nxc smb 10.0.23.96 -u 'guest' -p '' --shares
+SMB         10.0.23.96      445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:shadow.gate) (signing:False) (SMBv1:None)
+SMB         10.0.23.96      445    DC01             [-] shadow.gate\guest: STATUS_ACCOUNT_DISABLED </div>
+        </div>
+        <p>Pretty standard for a domain controller. We'll target SMB first.</p>
+        <div class="callout">
+          <div class="callout-label">Note</div>
+          <p>Lots of open ports, but seeing as we do not have credentials, it's time to test anonymous access.</p>
+        </div>
+      </div>
+
 
       <div class="section" id="foothold">
         <div class="section-heading"><span class="section-num">02</span> Foothold</div>
