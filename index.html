@@ -12,12 +12,14 @@
     --bg2: #0f1318;
     --bg3: #141a22;
     --card: #111520;
-    --border: #1e2d3d;
-    --accent: #00d4ff;
+    --border: #1a3060;
+    --accent: #1565c0;
+    --accent-bright: #2979d4;
     --accent2: #ff6b35;
     --accent3: #39d353;
     --text: #e8edf2;
-    --muted: #7a9aaa;
+    --muted: #5a7abf;
+    --muted2: #4a6a9a;
     --mono: 'Share Tech Mono', monospace;
     --sans: 'Barlow', sans-serif;
     --condensed: 'Barlow Condensed', sans-serif;
@@ -36,7 +38,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,255,0.015) 2px, rgba(0,212,255,0.015) 4px);
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
     pointer-events: none;
     z-index: 1000;
   }
@@ -65,7 +67,7 @@
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    color: var(--accent);
+    color: var(--accent-bright);
     text-transform: uppercase;
     flex-shrink: 0;
   }
@@ -80,28 +82,38 @@
     letter-spacing: 0.1em;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-bright); }
   .page-wrap {
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 2rem;
   }
+
+  /* ── HERO ── */
   .hero {
-    padding: 5rem 0 4rem;
+    padding: 4rem 0 4rem;
     position: relative;
   }
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
+  .hero-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.6rem;
     opacity: 0;
     animation: fadeUp 0.5s 0.1s forwards;
   }
-  .hero-tag::before { content: '[ '; }
-  .hero-tag::after { content: ' ]'; }
+  .hero-logo-wrap img {
+    width: 360px;
+    max-width: 90%;
+    display: block;
+    border-radius: 6px;
+  }
+  .hero-rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #1a4a9e, #1565c0, #1a4a9e, transparent);
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp 0.4s 0.25s forwards;
+  }
   .hero h1 {
     font-family: var(--condensed);
     font-size: clamp(2.6rem, 8vw, 5.5rem);
@@ -109,19 +121,30 @@
     line-height: 0.95;
     text-transform: uppercase;
     letter-spacing: -0.01em;
+    text-align: center;
     opacity: 0;
-    animation: fadeUp 0.6s 0.2s forwards;
+    animation: fadeUp 0.6s 0.3s forwards;
   }
   .hero h1 .line1 { display: block; color: var(--text); }
-  .hero h1 .line2 { display: block; color: var(--accent); }
-  .hero h1 .line3 { display: block; color: var(--muted); font-size: 55%; font-weight: 700; letter-spacing: 0.15em; margin-top: 0.3em; }
+  .hero h1 .line3 {
+    display: block;
+    color: var(--muted);
+    font-size: 42%;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-top: 0.5em;
+  }
   .hero-sub {
     margin-top: 1.8rem;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.7;
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0;
-    animation: fadeUp 0.6s 0.35s forwards;
+    animation: fadeUp 0.6s 0.45s forwards;
   }
   .hero-sub strong { color: var(--text); font-weight: 600; }
   .stat-strip {
@@ -132,7 +155,7 @@
     border-radius: 4px;
     overflow: hidden;
     opacity: 0;
-    animation: fadeUp 0.6s 0.5s forwards;
+    animation: fadeUp 0.6s 0.6s forwards;
     flex-wrap: wrap;
   }
   .stat {
@@ -146,17 +169,19 @@
     font-family: var(--condensed);
     font-size: 1.7rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--accent-bright);
     line-height: 1;
   }
   .stat-label {
     font-family: var(--mono);
     font-size: 0.6rem;
-    color: var(--muted);
+    color: var(--muted2);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 0.3rem;
   }
+
+  /* ── SECTIONS ── */
   section {
     padding: 4rem 0;
     border-top: 1px solid var(--border);
@@ -170,7 +195,7 @@
   .section-num {
     font-family: var(--mono);
     font-size: 0.7rem;
-    color: var(--accent);
+    color: var(--accent-bright);
     opacity: 0.6;
     flex-shrink: 0;
   }
@@ -188,6 +213,8 @@
     height: 1px;
     background: var(--border);
   }
+
+  /* ── CERTS ── */
   .cert-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -209,13 +236,13 @@
     text-decoration: none;
     color: inherit;
   }
-  .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cert-card:hover { border-color: var(--accent-bright); transform: translateY(-2px); }
   .cert-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: var(--accent);
+    background: var(--accent-bright);
     opacity: 0;
     transition: opacity 0.2s;
   }
@@ -223,7 +250,7 @@
   .cert-issuer {
     font-family: var(--mono);
     font-size: 0.6rem;
-    color: var(--muted);
+    color: var(--muted2);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 0.4rem;
@@ -249,6 +276,8 @@
     letter-spacing: 0.1em;
     align-self: flex-start;
   }
+
+  /* ── LAB CARDS ── */
   .lab-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -264,7 +293,7 @@
     color: inherit;
     display: block;
   }
-  .lab-card:hover { border-color: var(--accent); }
+  .lab-card:hover { border-color: var(--accent-bright); }
   .lab-card-type {
     font-family: var(--mono);
     font-size: 0.62rem;
@@ -294,14 +323,16 @@
   .tag {
     font-family: var(--mono);
     font-size: 0.6rem;
-    color: var(--accent);
-    background: rgba(0,212,255,0.06);
-    border: 1px solid rgba(0,212,255,0.15);
+    color: var(--accent-bright);
+    background: rgba(21,101,192,0.08);
+    border: 1px solid rgba(21,101,192,0.2);
     border-radius: 2px;
     padding: 2px 7px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
+
+  /* ── TIMELINE ── */
   .timeline {
     position: relative;
     padding-left: 2rem;
@@ -324,14 +355,14 @@
     top: 8px;
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent-bright);
     margin-left: -3px;
     box-shadow: 0 0 8px var(--accent);
   }
   .tl-date {
     font-family: var(--mono);
     font-size: 0.65rem;
-    color: var(--muted);
+    color: var(--muted2);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin-bottom: 0.3rem;
@@ -347,6 +378,8 @@
     color: var(--muted);
     margin-top: 0.3rem;
   }
+
+  /* ── CONTACT ── */
   .contact-row {
     display: flex;
     gap: 12px;
@@ -364,10 +397,12 @@
     cursor: pointer;
     border: none;
   }
-  .contact-btn.primary { background: var(--accent); color: #000; font-weight: 700; }
-  .contact-btn.primary:hover { background: #33deff; }
-  .contact-btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-  .contact-btn.ghost:hover { background: rgba(0,212,255,0.08); }
+  .contact-btn.primary { background: var(--accent-bright); color: #fff; font-weight: 700; }
+  .contact-btn.primary:hover { background: #3d8be0; }
+  .contact-btn.ghost { background: transparent; color: var(--accent-bright); border: 1px solid var(--accent-bright); }
+  .contact-btn.ghost:hover { background: rgba(21,101,192,0.1); }
+
+  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 1.5rem 2rem;
@@ -385,22 +420,18 @@
     font-family: var(--condensed);
     font-size: 1rem;
     font-weight: 800;
-    color: var(--muted);
+    color: var(--muted2);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
   .footer-copy {
     font-family: var(--mono);
     font-size: 0.65rem;
-    color: var(--muted);
+    color: var(--muted2);
     letter-spacing: 0.08em;
   }
-  .cursor::after {
-    content: '▋';
-    animation: blink 1s step-end infinite;
-    color: var(--accent);
-    font-size: 0.8em;
-  }
+
+  /* ── SEARCH ── */
   .search-wrap { margin-bottom: 1.8rem; }
   .search-input {
     width: 100%;
@@ -416,36 +447,47 @@
     outline: none;
     transition: border-color 0.2s;
   }
-  .search-input::placeholder { color: var(--muted); }
-  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--muted2); }
+  .search-input:focus { border-color: var(--accent-bright); }
   .no-results {
     display: none;
     font-family: var(--mono);
     font-size: 0.75rem;
-    color: var(--muted);
+    color: var(--muted2);
     margin-top: 1rem;
     letter-spacing: 0.1em;
   }
   .section-sub {
     font-family: var(--mono);
     font-size: 0.68rem;
-    color: var(--muted);
+    color: var(--muted2);
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-bottom: 1.5rem;
     margin-top: -1.5rem;
+  }
+
+  /* ── MISC ── */
+  .cursor::after {
+    content: '▋';
+    animation: blink 1s step-end infinite;
+    color: var(--accent-bright);
+    font-size: 0.8em;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     nav { padding: 1rem; }
     .nav-links { gap: 0.8rem; }
     .nav-links a { font-size: 0.62rem; }
     .page-wrap { padding: 0 1rem; }
-    .hero { padding: 3rem 0 2.5rem; }
+    .hero { padding: 2.5rem 0 2.5rem; }
+    .hero-logo-wrap img { width: 260px; }
     .hero-sub { font-size: 0.95rem; }
     .stat-strip { flex-direction: column; }
     .stat { border-right: none; border-bottom: 1px solid var(--border); }
@@ -462,6 +504,7 @@
     .lab-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
     .stat-strip { flex-wrap: wrap; }
     .stat { flex: 1 1 160px; }
+    .hero-logo-wrap img { width: 300px; }
   }
 </style>
 </head>
@@ -483,10 +526,12 @@
 <div class="page-wrap">
 
   <div class="hero">
-    <div class="hero-tag">Truck-to-Tech Security</div>
+    <div class="hero-logo-wrap">
+      <img src="/assets/img/t2t-logo.png" alt="Truck-2-Tech Security" />
+    </div>
+    <div class="hero-rule"></div>
     <h1>
       <span class="line1">James Shank</span>
-      <span class="line2">T2T Security</span>
       <span class="line3">Network Engineering &amp; Information Security // Kansas City</span>
     </h1>
     <p class="hero-sub">
@@ -495,7 +540,7 @@
     </p>
     <div class="stat-strip">
       <div class="stat">
-        <div class="stat-num" style="font-size: 2rem; color: var(--accent);">20+</div>
+        <div class="stat-num" style="font-size: 2rem;">20+</div>
         <div class="stat-label">Years Professional Employment</div>
       </div>
       <div class="stat">
@@ -503,11 +548,11 @@
         <div class="stat-label">CSAT Score</div>
       </div>
       <div class="stat">
-        <div class="stat-num">HIPAA &amp; PCI/DSS</div>
+        <div class="stat-num" style="font-size:1rem;">HIPAA &amp; PCI/DSS</div>
         <div class="stat-label">Regulated Environments</div>
       </div>
       <div class="stat">
-        <div class="stat-num">Pro/Master</div>
+        <div class="stat-num" style="font-size:1rem;">Pro/Master</div>
         <div class="stat-label">HackTheBox Ranking</div>
       </div>
     </div>
@@ -520,11 +565,11 @@
       <div class="section-line"></div>
     </div>
     <div class="cert-grid">
-        <a href="https://www.credly.com/badges/60b3e207-f677-4c3f-887a-7dcb62f73dc0/public_url" class="cert-card" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.credly.com/badges/60b3e207-f677-4c3f-887a-7dcb62f73dc0/public_url" class="cert-card" target="_blank" rel="noopener noreferrer">
         <div class="cert-issuer">CompTIA</div>
         <div class="cert-name">A+</div>
         <div class="cert-badge">Active</div>
-    </a>
+      </a>
       <a href="https://www.credly.com/badges/7c81e4e9-3f3a-49d1-bf2a-e9c679dec945/public_url" class="cert-card" target="_blank" rel="noopener noreferrer">
         <div class="cert-issuer">CompTIA</div>
         <div class="cert-name">Network+</div>
@@ -646,7 +691,7 @@
           <span class="tag">ESC</span>
           <span class="tag">DCSync</span>
           <span class="tag">Credential Spraying</span>
-        </div>      
+        </div>
       </a>
       <a href="https://truck-2-tech-security.gitbook.io/writeups-and-labs/security-research/hacksmarter-labs/sharethepain" class="lab-card" target="_blank" rel="noopener noreferrer">
         <div class="lab-card-type">HackSmarter</div>
@@ -654,7 +699,6 @@
         <div class="lab-card-desc">Chaining unauthenticated SMB access, NTLM hash capture, pivoting through an internal MSSQL service via Ligolo-ng, abusing SeImpersonatePrivilege with EfsPotato.</div>
         <div class="lab-tags">
           <span class="tag">Active Directory</span>
-          <span class="tag">AD</span>
           <span class="tag">SMB</span>
           <span class="tag">NTLM Capture</span>
           <span class="tag">Responder</span>
@@ -681,7 +725,7 @@
           <span class="tag">GenericWrite</span>
         </div>
       </a>
-      </div>
+    </div>
     <p class="no-results" id="sec-no-results">No results found.</p>
   </section>
 
