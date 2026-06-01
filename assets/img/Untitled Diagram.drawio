@@ -50,7 +50,7 @@
           <mxGeometry height="59" width="53" x="793.5" y="272" as="geometry" />
         </mxCell>
         <mxCell id="61pzecp0BBr4OFAzCy6C-14" parent="1" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#005F4B;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam2.linux_server;" value="Ubuntu Web Server&lt;div&gt;10.10.3.10 (Static)&lt;/div&gt;" vertex="1">
-          <mxGeometry height="52" width="40" x="7.5" y="34" as="geometry" />
+          <mxGeometry height="52" width="40" x="-18.56" y="34" as="geometry" />
         </mxCell>
         <mxCell id="61pzecp0BBr4OFAzCy6C-19" parent="1" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.mscae.enterprise.android_phone" value="" vertex="1">
           <mxGeometry height="50" width="30" x="-210" y="500" as="geometry" />
