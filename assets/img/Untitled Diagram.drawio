@@ -1,20 +1,20 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="aE-eTVAnwCrOjX7-gmKK">
-    <mxGraphModel dx="1814" dy="1149" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1814" dy="749" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="EZgRDW7K4JCvW-KvDmnW-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;fontSize=14;verticalAlign=top;" value="Site A LAN" vertex="1">
-          <mxGeometry height="280" width="400" x="50" y="210" as="geometry" />
+          <mxGeometry height="280" width="400" x="-70" y="160" as="geometry" />
         </mxCell>
         <mxCell id="EZgRDW7K4JCvW-KvDmnW-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#6c8ebf;opacity=50;fontSize=14;verticalAlign=top;" value="Site B LAN" vertex="1">
           <mxGeometry height="280" width="400" x="660" y="210" as="geometry" />
         </mxCell>
         <mxCell id="EZgRDW7K4JCvW-KvDmnW-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#6c8ebf;opacity=50;fontSize=14;verticalAlign=top;" value="DMZ" vertex="1">
-          <mxGeometry height="130" width="240" x="-20" y="-70" as="geometry" />
+          <mxGeometry height="130" width="240" x="-130" y="10" as="geometry" />
         </mxCell>
         <mxCell id="EZgRDW7K4JCvW-KvDmnW-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#6c8ebf;opacity=50;fontSize=14;verticalAlign=top;" value="Guest" vertex="1">
-          <mxGeometry height="130" width="240" x="260" y="-70" as="geometry" />
+          <mxGeometry height="130" width="240" x="140" y="10" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
