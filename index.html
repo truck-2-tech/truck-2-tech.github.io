@@ -572,13 +572,18 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">T2T<span>SEC</span></div>
-    <ul class="nav-links">
-      <li><a href="#certs">Certs</a></li>
-      <li><a href="#networking">Networking</a></li>
-      <li><a href="#security">Security</a></li>
-      <li><a href="#background">Background</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-drawer" id="nav-drawer" role="navigation">
+      <a href="#certs"><span class="drawer-num">01</span>Certifications</a>
+      <a href="#networking"><span class="drawer-num">02</span>Networking</a>
+      <a href="#security"><span class="drawer-num">03</span>Security</a>
+      <a href="#background"><span class="drawer-num">04</span>Background</a>
+      <a href="#contact"><span class="drawer-num">05</span>Contact</a>
+    </div>
   </div>
 </nav>
 
