@@ -44,7 +44,7 @@
     position: fixed;
     inset: 0;
     background:
-      rgba(10,12,15,0.88),
+      rgba(10,12,15,0.94),
       repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
     pointer-events: none;
     z-index: 1000;
@@ -556,6 +556,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
+    body { background-attachment: scroll; }
     .nav-inner { padding: 0 1rem; }
     .page-wrap { padding: 0 1rem; }
     .hero { padding: 2.5rem 0 2.5rem; }
