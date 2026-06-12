@@ -28,6 +28,10 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
+    background-image: url('/assets/potential-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text);
     font-family: var(--sans);
     font-weight: 400;
@@ -39,7 +43,9 @@
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
+    background:
+      rgba(10,12,15,0.88),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
     pointer-events: none;
     z-index: 1000;
   }
