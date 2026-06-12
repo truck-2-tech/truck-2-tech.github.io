@@ -27,8 +27,10 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
-    background-image: url('/assets/img/potential_background.png');
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(rgba(10,12,15,0.93), rgba(10,12,15,0.93)),
+      url('/assets/img/potential_background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -43,9 +45,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background:
-      rgba(10,12,15,0.94),
-      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(21,101,192,0.015) 2px, rgba(21,101,192,0.015) 4px);
     pointer-events: none;
     z-index: 1000;
   }
