@@ -541,6 +541,40 @@
     margin-top: -1.5rem;
   }
 
+  /* ── SEE MORE ── */
+  .see-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+  .see-more-btn {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-bright);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.6rem 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .see-more-btn:hover {
+    border-color: var(--accent-bright);
+    background: rgba(21,101,192,0.08);
+  }
+  .see-more-btn .chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .see-more-btn.expanded .chevron {
+    transform: rotate(180deg);
+  }
+
   /* ── MISC ── */
   .cursor::after {
     content: '▋';
@@ -971,23 +1005,130 @@
 </footer>
 
 <script>
+  function debounce(fn, wait) {
+    let t;
+    return function(...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
+  const gridControllers = {};
+
+  function setupCollapsibleGrid(gridId, rowsToShow) {
+    rowsToShow = rowsToShow || 2;
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.lab-card'));
+    if (cards.length === 0) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'see-more-wrap';
+    wrap.innerHTML = '<button class="see-more-btn" type="button"><span class="label">See More</span><span class="chevron">&#9662;</span></button>';
+    grid.insertAdjacentElement('afterend', wrap);
+    const btn = wrap.querySelector('.see-more-btn');
+    const label = wrap.querySelector('.label');
+
+    let expanded = false;
+    let cutoffTop = null;
+
+    function isSearching() {
+      const input = grid.parentElement.querySelector('.search-input');
+      return !!(input && input.value.trim() !== '');
+    }
+
+    function measure() {
+      cards.forEach(c => c.style.removeProperty('display'));
+      const tops = [];
+      cards.forEach(c => {
+        const top = c.offsetTop;
+        if (!tops.includes(top)) tops.push(top);
+      });
+      tops.sort((a, b) => a - b);
+      cutoffTop = tops.length > rowsToShow ? tops[rowsToShow] : null;
+    }
+
+    function render() {
+      if (isSearching()) {
+        wrap.style.display = 'none';
+        return;
+      }
+      if (cutoffTop === null) {
+        cards.forEach(c => c.style.removeProperty('display'));
+        wrap.style.display = 'none';
+        return;
+      }
+      if (expanded) {
+        cards.forEach(c => c.style.removeProperty('display'));
+        label.textContent = 'See Less';
+        btn.classList.add('expanded');
+      } else {
+        cards.forEach(c => {
+          c.style.display = c.offsetTop >= cutoffTop ? 'none' : '';
+        });
+        label.textContent = 'See More';
+        btn.classList.remove('expanded');
+      }
+      wrap.style.display = 'flex';
+    }
+
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
+      render();
+    });
+
+    gridControllers[gridId] = { render };
+
+    measure();
+    render();
+
+    window.addEventListener('resize', debounce(() => {
+      expanded = false;
+      measure();
+      render();
+    }, 200));
+  }
+
   function initSearch(inputId, gridId, noResultsId) {
     const input = document.getElementById(inputId);
     const noResults = document.getElementById(noResultsId);
+    const controller = gridControllers[gridId];
+
     input.addEventListener('input', function() {
       const query = this.value.toLowerCase().trim();
       const cards = document.querySelectorAll('#' + gridId + ' .lab-card');
+
+      if (query === '') {
+        if (controller) {
+          controller.render();
+        } else {
+          cards.forEach(c => c.style.removeProperty('display'));
+        }
+        noResults.style.display = 'none';
+        return;
+      }
+
+      let visibleCount = 0;
       cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = (query === '' || text.includes(query)) ? 'block' : 'none';
+        const matches = card.textContent.toLowerCase().includes(query);
+        card.style.display = matches ? '' : 'none';
+        if (matches) visibleCount++;
       });
-      const visible = [...cards].filter(c => c.style.display !== 'none').length;
-      noResults.style.display = (query !== '' && visible === 0) ? 'block' : 'none';
+
+      if (controller) controller.render();
+      noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
     });
   }
-  initSearch('net-search', 'net-grid', 'net-no-results');
-  initSearch('tools-search', 'tools-grid', 'tools-no-results');
-  initSearch('sec-search', 'sec-grid', 'sec-no-results');
+
+  window.addEventListener('load', function() {
+    setupCollapsibleGrid('net-grid', 2);
+    setupCollapsibleGrid('tools-grid', 2);
+    setupCollapsibleGrid('sec-grid', 2);
+
+    initSearch('net-search', 'net-grid', 'net-no-results');
+    initSearch('tools-search', 'tools-grid', 'tools-no-results');
+    initSearch('sec-search', 'sec-grid', 'sec-no-results');
+  });
 
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('nav-drawer');
